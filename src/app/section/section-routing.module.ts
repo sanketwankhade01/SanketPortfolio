@@ -8,16 +8,25 @@ import { PersonalComponent } from './personal/personal.component';
 const routes: Routes = [
   {
     path: '',
-    component: SectionComponent,
+    children:[
+      {
+        path:'',
+        redirectTo:  'index'
+      },
+      {
+        path: 'index',
+        component: SectionComponent,
+      },
+      {
+        path: 'personal',
+        component: PersonalComponent,
+      },
+      {
+        path: 'professional',
+        component: ProfessionalComponent,
+      }
+    ]
   },
-  {
-    path: 'personal',
-    component: PersonalComponent,
-  },
-  {
-    path: 'professional',
-    component: ProfessionalComponent,
-  }
 ];
 
 @NgModule({

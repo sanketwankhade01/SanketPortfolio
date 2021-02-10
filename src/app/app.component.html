@@ -1,20 +1,20 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-style-two">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/" href="javascript:void(0)"><img style="height: 65px;"
-        src="assets/images/logo.png" alt="logo"></a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item"><a class="nav-link" href="#home" routerLink="/home" routerLinkActive="active">Home</a></li> -->
-        <li class="nav-item"><a class="nav-link" href="#personal" routerLink="/personal"
-            routerLinkActive="active">Personal</a></li>
-        <li class="nav-item"><a class="nav-link" href="#professional" routerLink="/professional"
-            routerLinkActive="active">Professional</a></li>
-      </ul>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-style-two" [ngClass]="{'bg-gray-light': !isHeaderShow}">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/" href="javascript:void(0)"><img style="height: 65px;"
+          src="assets/images/logo.png" alt="logo"></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" *ngIf="isHeaderShow">
+          <!-- <li class="nav-item"><a class="nav-link" href="#home" routerLink="/home" routerLinkActive="active">Home</a></li> -->
+          <li class="nav-item"><a class="nav-link"  [routerLink]="PersonalUrl"
+              routerLinkActive="active">Personal</a></li>
+          <li class="nav-item"><a class="nav-link"  [routerLink]="ProfessionalUrl"
+              routerLinkActive="active">Professional</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <router-outlet></router-outlet>

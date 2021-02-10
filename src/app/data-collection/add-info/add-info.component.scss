@@ -1,0 +1,30 @@
+.add-info-container {
+    margin-top: 85px;
+
+    .page-header {
+        font-family: 'Poppins', sans-serif;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .page-subheader {
+        font-family: 'Poppins', sans-serif;
+        margin-top: 10px;
+    }
+
+    .card{
+        .card-header{
+            padding: 10px;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card-body{
+            padding: 10px;
+            .card-title{
+                font-family: 'Poppins', sans-serif;
+            }
+        }
+    }
+
+}

@@ -175,6 +175,23 @@ p {
         color: $black-color;
     }
 }
+
+.btn-preview {
+    color: #000000;
+    background-color: #95d6f4;
+}
+
+.btn-sm{
+    color: $black-color;
+    background-color: $main-color;
+    border: none;
+    padding: 5px;
+    line-height: initial;
+    border-radius: 5px 10px;
+    transition: 0.5s;
+    font-weight: 700;
+    font-size: 14px;
+}
 /*form-control */
 .form-control {
     height: 35px;
@@ -715,6 +732,11 @@ Services Area CSS
         margin-top: 45px;
         transition: $transition;
     }
+    ul{
+        li{
+            color: #eeeeee;
+        }
+    }
     &:hover {
         .icon {
             color: $black-color;
@@ -733,6 +755,11 @@ Services Area CSS
         }
         p {
             color: $black-color;
+        }
+        ul{
+            li{
+                color: $black-color;
+            }
         }
         &:hover {
             .icon {
@@ -754,6 +781,12 @@ Services Area CSS
         p {
             color: $black-color;
         }
+
+        ul{
+            li{
+                color: $black-color;
+            }
+        }
         &:hover {
             .icon {
                 color: $black-color;
@@ -774,6 +807,11 @@ Services Area CSS
             }
             p {
                 color: $black-color;
+            }
+            ul{
+                li{
+                    color: $black-color;
+                }
             }
         }
     }
@@ -1123,3 +1161,11 @@ About Area CSS
     }
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }

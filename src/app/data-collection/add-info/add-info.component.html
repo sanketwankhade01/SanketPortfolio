@@ -1,0 +1,164 @@
+  <div class="add-info-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+        <h4 class="page-header">PortFolio Creator</h4>
+        </div>
+      </div>
+      <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-3">
+            <h5 class="card-header">Info</h5>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-5">
+                        <label>Full Name</label>
+                        <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && formcontrol.fullName.errors }" />
+                        <div *ngIf="submitted && formcontrol.fullName.errors" class="invalid-feedback">
+                            <div *ngIf="formcontrol.fullName.errors.required">Full Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-5">
+                        <label>Job Profile</label>
+                        <input type="text" formControlName="jobProfile" class="form-control" [ngClass]="{ 'is-invalid': submitted && formcontrol.jobProfile.errors }" />
+                        <div *ngIf="submitted && formcontrol.jobProfile.errors" class="invalid-feedback">
+                            <div *ngIf="formcontrol.jobProfile.errors.required">Job Profile is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-5">
+                      <label>Contact Number</label>
+                      <input type="text" formControlName="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && formcontrol.number.errors }" />
+                      <div *ngIf="submitted && formcontrol.number.errors" class="invalid-feedback">
+                          <div *ngIf="formcontrol.number.errors.required">Contact Number is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group col-5">
+                      <label>Email </label>
+                      <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formcontrol.email.errors }" />
+                      <div *ngIf="submitted && formcontrol.email.errors" class="invalid-feedback">
+                          <div *ngIf="formcontrol.email.errors.required">Email is required</div>
+                      </div>
+                  </div>
+              </div>
+                
+            </div>
+          </div>
+          <div class="card mb-3" [formGroup]="formcontrol.personal">
+            <h5 class="card-header">Personal</h5>
+            <div class="card-body">
+              <h5 class="subheader">Education  <a class="d-inline" href="javascript:void(0)" (click)="addEduction($event);"> <i class="fas fa-plus-circle"></i> </a> </h5>
+                <div class="form-row" *ngFor="let edu of educationArray.controls; let i=index" formArrayName="education"> 
+                 <ng-container [formGroupName]="i">
+                  <div class="form-group col-5">
+                    <label>Year</label>
+                    <input type="year" formControlName="year" class="form-control" [ngClass]="{ 'is-invalid': submitted && edu.get('year').errors }" />
+                    <div *ngIf="submitted" class="invalid-feedback">
+                        <div *ngIf="edu.get('year').hasError('required')">Year is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Description</label>
+                    <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && edu.get('description').errors }" />
+                    <div *ngIf="submitted" class="invalid-feedback">
+                      <div *ngIf="edu.get('description').hasError('required')">Description is required</div>
+                  </div>
+                </div>   
+                </ng-container>
+                </div>
+                <h5 class="subheader">Skill  <a class="d-inline" href="javascript:void(0)" (click)="addSkill($event);"> <i class="fas fa-plus-circle"></i> </a> </h5>
+                <div class="form-row"  *ngFor="let skill of skillArray.controls; let j=index" formArrayName="skill">
+                  <ng-container [formGroupName]="j">
+                    <div class="form-group col-5">
+                      <label>Skill Name</label>
+                      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && skill.get('name').errors }" />
+                      <div *ngIf="submitted" class="invalid-feedback">
+                          <div *ngIf="skill.get('name').hasError('required')">Skill name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group col-5">
+                      <label>Percentage</label>
+                      <input type="number"  formControlName="percentage" class="form-control" [ngClass]="{ 'is-invalid': submitted && skill.get('percentage').errors }" />
+                      <div *ngIf="submitted " class="invalid-feedback">
+                          <div *ngIf="skill.get('percentage').hasError('required')">Percentage is required</div>
+                      </div>
+                  </div>
+                  </ng-container>  
+                 
+                </div>
+            </div>
+          </div>
+          <div class="card mb-3" [formGroup]="formcontrol.professional">
+            <h5 class="card-header">Professional</h5>
+            <div class="card-body">
+              <h5 class="subheader">Companies <a class="d-inline" href="javascript:void(0)" (click)="addCompany($event);"> <i class="fas fa-plus-circle"></i> </a> </h5>
+                <div class="form-row" *ngFor="let pro of professionalArray.controls; let k=index"> 
+                  <ng-container [formGroupName]="k">
+                  <div class="row col-12">
+                    <div class="form-group col-4">
+                      <label>Company Name</label>
+                      <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && pro.get('companyName').errors }" />
+                      <div *ngIf="submitted" class="invalid-feedback">
+                          <div *ngIf="pro.get('companyName').hasError('required')">Company Name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group col-4">
+                      <label>Profile</label>
+                      <input type="text" formControlName="profile" class="form-control" [ngClass]="{ 'is-invalid': submitted && pro.get('profile').errors }" />
+                      <div *ngIf="submitted" class="invalid-feedback">
+                        <div *ngIf="pro.get('profile').hasError('required')">Profile is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-2">
+                    <label>From Duration</label>
+                    <input type="month" formControlName="durationFrom" class="form-control" [ngClass]="{ 'is-invalid': submitted && pro.get('durationFrom').errors }" />
+                    <div *ngIf="submitted" class="invalid-feedback">
+                      <div *ngIf="pro.get('durationFrom').hasError('required')">Duration From is required</div>
+                  </div>
+                </div>
+                <div class="form-group col-2">
+                  <label>To Duration</label>
+                  <input type="month" formControlName="durationTo" class="form-control" [ngClass]="{ 'is-invalid': submitted && pro.get('durationTo').errors }" />
+                  <div *ngIf="submitted" class="invalid-feedback">
+                    <div *ngIf="pro.get('durationTo').hasError('required')">Duration is required</div>
+                </div>
+              </div>
+                  </div>
+                  <div class="row col-12">
+                    <div class="form-group col-12">
+                      <label>Description</label>
+                      <ck-editor formControlName="description"  skin="moono-lisa" language="en" [fullPage]="true" [ngClass]="{ 'is-invalid': submitted && pro.get('description').errors }"></ck-editor>
+                      <div *ngIf="submitted" class="invalid-feedback">
+                        <div *ngIf="pro.get('description').hasError('required')">Description is required</div>
+                    </div>
+                  </div>
+                  </div>
+                </ng-container>
+                </div>
+            </div>
+          </div>
+          <div class="text-center mb-5">
+            <button class="btn btn-preview mr-1">Save & Preview</button>
+            <button class="btn btn-secondary" type="reset" (click)="openModal(template)">Cancel</button>
+        </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <ng-template #template>
+    <div class="modal-body text-center ">
+      <p>Do you want to confirm to clean data</p>
+      <button type="button" class="btn btn-default" (click)="onReset()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+  <ng-template #template1>
+    <div class="modal-body text-center ">
+      <p>Your data save Succesfully.</p>
+      <button type="button" class="btn btn-primary" (click)="decline()" >Okey</button>
+    </div>
+  </ng-template>

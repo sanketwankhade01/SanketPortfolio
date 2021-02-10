@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit {
-
+  public PortFolioData:any;
   constructor() { }
 
   ngOnInit(): void {
+  this.PortFolioData=JSON.parse(localStorage.getItem('portfolio-data'));  
   }
 
+  
+  
 }
